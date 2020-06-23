@@ -13,7 +13,7 @@ const introducePerson = (data) => {
   console.log(`His name is ${name} (${age} yrs old). He lives in ${city}.`);
 };
 
-const me = ['Josh', 'Montreal', 33];
+const me = ["Josh", "Montreal", 33];
 introducePerson(me);
 ```
 
@@ -30,7 +30,7 @@ function introducePerson(data) {
   console.log(`His name is ${name} (${age} yrs old). He lives in ${city}.`);
 }
 
-const me = ['Josh', 'Montreal', 33];
+const me = ["Josh", "Montreal", 33];
 introducePerson(me);
 ```
 
@@ -54,10 +54,16 @@ Finally: something similar works with objects.
 ```js
 // Example
 let myObj = {
-  name: 'Josh',
-  city: 'Montreal',
+  name: "Josh",
+  city: "Montreal",
   age: 33,
 };
+
+const { age, city, name } = myObj;
+// this line above is equivalent to:
+const name = myObj.name;
+const city = myObj.city;
+const age = myObj.age;
 
 console.log(
   `His name is ${myObj.name} (${myObj.age} yrs old). He lives in ${myObj.city}.`
@@ -77,8 +83,10 @@ Convert the following to take advantage of deconstruction
 let winningNumbers = [4, 17, 38, 9];
 
 let firstPlace = winningNumbers[0];
-let secondPlace = winningNumbers[0];
-let thirdPlace = winningNumbers[0];
+let secondPlace = winningNumbers[1];
+let thirdPlace = winningNumbers[2];
+//convert to one line
+const [firstPlace, secondPlace, thirdPlace] = winningNumbers;
 
 console.log(`Winners are: ${firstPlace}, ${secondPlace}, ${thirdPlace}.`);
 ```
@@ -88,12 +96,13 @@ console.log(`Winners are: ${firstPlace}, ${secondPlace}, ${thirdPlace}.`);
 ```js
 // Exercise 2
 let weatherData = {
-  city: 'Toronto',
-  weather: 'sunny',
+  city: "Toronto",
+  weather: "sunny",
   temperature: 23,
 };
 
 function printWeather(data) {
+  const { weather, city, temperature } = data;
   console.log(
     `It is ${data.weather} in ${data.city}, with a high of ${temperature}.`
   );
@@ -107,12 +116,12 @@ printWeather(weatherData);
 ```js
 // Exercise 3
 function handleChange(event) {
-  let value = event.target.value;
+  let { value, id } = event.target;
   console.log(value);
 }
 
-let input = document.querySelector('input');
-input.addEventListener('change', handleChange);
+let input = document.querySelector("input");
+input.addEventListener("change", handleChange);
 ```
 
 ---
