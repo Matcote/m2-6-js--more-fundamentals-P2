@@ -2,12 +2,12 @@
 // below is an example of an array of objects, where each object represents a person:
 
 const people = [
-  { name: { first: 'Alyssa', middle: 'P.', last: 'Hacker' }, age: 26 },
-  { name: { first: 'Ben', last: 'Bitdiddle' }, age: 34 },
-  { name: { first: 'Eva', middle: 'Lu', last: 'Ator' }, age: 40 },
-  { name: { first: 'Lem', middle: 'E.', last: 'Tweakit' }, age: 45 },
-  { name: { first: 'Louis', last: 'Reasoner' }, age: 21 },
-  { name: { first: 'Shahan', middle: 'Haig', last: 'Krakirian' }, age: 21 },
+  { name: { first: "Alyssa", middle: "P.", last: "Hacker" }, age: 26 },
+  { name: { first: "Ben", last: "Bitdiddle" }, age: 34 },
+  { name: { first: "Eva", middle: "Lu", last: "Ator" }, age: 40 },
+  { name: { first: "Lem", middle: "E.", last: "Tweakit" }, age: 45 },
+  { name: { first: "Louis", last: "Reasoner" }, age: 21 },
+  { name: { first: "Shahan", middle: "Haig", last: "Krakirian" }, age: 21 },
 ];
 
 //-------------------------------------------------
@@ -17,7 +17,12 @@ const people = [
 // Write a function that returns the average age of the `people` array.
 
 function avgAge(peopleArr) {
-  // return something
+  let total = 0;
+  peopleArr.forEach((obj) => {
+    total += obj.age;
+  });
+  let average = total / peopleArr.length;
+  return Math.round(average);
 }
 
 console.log(`Average age is ${avgAge(people)}.`);
@@ -31,7 +36,12 @@ console.log(`Average age is ${avgAge(people)}.`);
 // Can you make use of your `fullName` function here?
 
 function fullName(peopleArr) {
-  // return something
+  let fullNames = peopleArr.map(function (obj) {
+    let people = Object.values(obj.name);
+    let peopleStrings = people.join(" ");
+    return peopleStrings;
+  });
+  return fullNames;
 }
 
 console.log(fullName(people));
@@ -44,7 +54,10 @@ console.log(fullName(people));
 // returns an array of just the people that are older than the specified age.
 
 function olderPeople(peopleArr, age) {
-  // return something
+  let oldies = peopleArr.filter(function (obj) {
+    return obj.age > age;
+  });
+  return oldies;
 }
 
 console.log(olderPeople(people, 26));
